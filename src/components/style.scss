@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Press+Start+2P&family=Quicksand&display=swap');
 $primary-color:  rgb(230, 230, 230);
 
 
@@ -12,8 +13,8 @@ body{
   .select-option{
     margin-top: 60px;
     background-color: rgba(255, 255, 255, .1);
-    font-size: 16px;
-    font-family: 'Courier New', Courier, monospace;
+    font-size: 32px;
+    font-family: 'Quicksand', sans-serif;
     color: $primary-color;
   }
 
@@ -24,13 +25,14 @@ body{
 
   .select-header{
     color: $primary-color;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Quicksand', sans-serif;
   }
 
 
   h4{
     color: rgb(181, 181, 181);
     font-size: 16px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Quicksand', sans-serif;
   }
+
 }

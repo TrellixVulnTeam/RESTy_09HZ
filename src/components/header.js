@@ -12,7 +12,7 @@ class Header extends React.Component {
   render() {
     return(
       <div>
-        <h1>RESTy McRestface</h1>
+        <h1>RESTy  McRestface</h1>
 
       </div>
     )
