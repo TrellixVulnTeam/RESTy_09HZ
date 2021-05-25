@@ -13,8 +13,9 @@ class Selector extends React.Component {
     }
   }
   handleClick = (e) => {
-    let url = e.target.value;
-    this.setState({ url });
+    // let url = e.target.value;
+    // this.setState({ url });
+    console.log(this.state);
   }
 
   handleChange = (e) => {
@@ -55,7 +56,7 @@ class Selector extends React.Component {
         <input type='text' placeholder='Add URL Here' onChange={this.handleChange}></input><br/>
         <Button type="submit" size="sm" className="bg-danger text-light" variant="secondary" onClick={this.handleClick}>Submit</Button>
       
-        <p className="select-option" >{this.state.routeType} {this.state.url}</p>: ''
+        <h3 className="select-option" >{this.state.routeType} {this.state.url}</h3>
     
       </div>
     )
