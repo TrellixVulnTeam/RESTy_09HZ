@@ -1,7 +1,5 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
 import './style.scss';
 
 class Selector extends React.Component {
@@ -13,24 +11,12 @@ class Selector extends React.Component {
     }
   }
   handleClick = (e) => {
-    // let url = e.target.value;
-    // this.setState({ url });
+    e.preventDefault();
+      let url = e.target.value;
+      this.setState({ url });
     console.log(this.state);
   }
 
-  handleChange = (e) => {
-    e.preventDefault();
-    let url = e.target.value;
-    this.setState({ url });
-    console.log(this.state.url, this.state.routeType)
-
-  }
-
-  handleSelect = (e) => {
-    let routeType = e.target.value;
-    this.setState({ routeType })
-    console.log(`inside handleSelect: ${this.state.routeType}`);
-  }
 
   render() {
     return (
@@ -44,7 +30,7 @@ class Selector extends React.Component {
         size="sm"
         onClick={this.handleSelect}
         > */}
-        <select onChange={this.handleSelect}> 
+        <select onChange={(e) => this.setState({ routeType: e.target.value })}> 
           <option ></option>
           <option value="GET">GET</option>
           <option value="POST">POST</option>
@@ -53,10 +39,12 @@ class Selector extends React.Component {
         </select> 
         {/* </DropdownButton> */}
 
-        <input type='text' placeholder='Add URL Here' onChange={this.handleChange}></input><br/>
-        <Button type="submit" size="sm" className="bg-danger text-light" variant="secondary" onClick={this.handleClick}>Submit</Button>
-      
+        <input className="input-field" type='text' placeholder='Add URL Here' onChange={(e) => this.setState({ url: e.target.value })}></input><br/>
+        <Button type="submit" size="sm" className="submit-btn bg-danger text-light" variant="secondary" onSubmit={this.handleClick}>Submit</Button>
+        
+
         <h3 className="select-option" >{this.state.routeType} {this.state.url}</h3>
+      
     
       </div>
     )
