@@ -1,0 +1,36 @@
+$primary-color:  rgb(230, 230, 230);
+
+
+body{
+  background-image:  url('https://images.unsplash.com/photo-1550537687-c91072c4792d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80');;
+  min-height: 100vh;
+  min-width: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+  
+  .select-option{
+    margin-top: 60px;
+    background-color: rgba(255, 255, 255, .1);
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    color: $primary-color;
+  }
+
+  .input-section{
+    margin-top: 100px;
+    margin-left: 20px;
+  }
+
+  .select-header{
+    color: $primary-color;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+
+  h4{
+    color: rgb(181, 181, 181);
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+}
