@@ -35,11 +35,12 @@ body{
     font-family: 'Quicksand', sans-serif;
   }
   .input-field {
-    margin-left: 10px;
+    // margin: 10px;
     width: 300px;
   }
 
   .submit-btn {
+    border-radius: 30px;
     margin-top: 15px;
     width: 80px;
   }
