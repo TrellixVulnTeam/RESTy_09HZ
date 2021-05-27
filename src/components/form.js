@@ -1,5 +1,8 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import superagent from 'superagent';
+import Loader from './loader';
+import { If, Else, When, Unless } from 'react-if';
 import './style.scss';
 
 class Form extends React.Component {
@@ -7,25 +10,42 @@ class Form extends React.Component {
     super(props);
     this.state = {
       url: "",
+      counter: 0,
       routeType: ""
+
     }
   }
+
+  toggleLoading = () => {
+    this.setState({ loading: !this.state.loading });
+  }
+
   handleClick = async (e) => {
     e.preventDefault();
-
+    this.props.toggleLoading();
     let route = this.state.routeType;
     let url = this.state.url;
+    sessionStorage.setItem(this.state.counter, (`${route}, ${url}`));
+    let storageCount = this.state.counter + 1;
+    this.setState({ counter: storageCount });
     console.log(url, route);
-    let raw = await fetch(url, {method:route});
-    let data = await raw.json();
-    let entries = data.results;
+    try{
+      
+      let raw = await superagent(route, url);
+      let results = raw.body.results;
+      // let results = await response.json();
+      console.log(results);
+      // let entries = data.results;
+      // let results = Object.entries(entries);
+      let count = results.count;
+      setTimeout(() => {
+        this.props.handler(count, results, url, route);
+        this.props.toggleLoading();
+      }, 1000);
+      } catch (e) {
+        this.props.handler(e);
+    }
 
-    let results = Object.entries(entries);
-
-    let count = data.count;
-    console.log(entries);
-    this.props.handler(count, results);
-    this.props.toggleLoading();
   }
 
   render() {
