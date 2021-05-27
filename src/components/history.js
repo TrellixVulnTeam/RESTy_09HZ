@@ -5,6 +5,7 @@ import './history.scss';
 const History = (props) => {
   const getValues = (e) => {
     let request = e.target.innerHTML;
+    console.log(request);
     request = request.split(' ');
     let url = request[1];
     let route = request[0];
