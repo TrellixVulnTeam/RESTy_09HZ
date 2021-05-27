@@ -17,6 +17,10 @@ In this first phase, our goal is to setup the basic scaffolding of the applicati
 - As a user, I expect an easy to read and understand user interface so that I can use the application intuitively
 - As a user, I want to enter the URL to a REST API and select the REST method to use to access it
 - As a user, I want visual confirmation that my entries and selections are valid so that I have confidence the application will be able to fetch the API data that I’ve requested
+- As a user, I want to be able to use all REST methods so that I can do more than just get data
+- As a user, I want a simple list of all previous queries I’ve run so that I can easily see which queries I’ve run before
+- As a user, I want to click on an old query and have my selections appear in the form for me, so I don’t have to re-type them
+- As a user, I want to see a “loading” indicator while RESTy is fetching data so that I know it’s working on my request
 
 > Developers
 
@@ -43,6 +47,20 @@ In this first phase, our goal is to setup the basic scaffolding of the applicati
   - Renders the count
   - Renders the Result Headers as “pretty” JSON
   - Renders the Result Body as “pretty” JSON
+
+- Add support for PUT, POST, and DELETE in your remote calls
+  - Whenever a query is successful (results come back), store the query parameters in local storage
+  - Store the URL, Method, and the Body (if any)
+  - Store only unique, successful queries
+- `<HomePage />`
+  - Add a simple history list to the left side of the application
+  - List all previous queries, showing the method and the URL
+  - When a user clicks a previous query, populate the RESTy forms with the query information
+  - Completely hide the output area (Headers & Results) when there are none to display
+  - Display any fetch/load errors in place of the results area, if they occur
+  - Add a “Loading” indicator while fetching
+    - When the user clicks the “Go!” button, show a loading icon on the page
+    - When the fetching of results is complete, remove the loading icon and show the results
 
 ### UML
 
