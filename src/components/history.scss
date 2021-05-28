@@ -1,13 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Press+Start+2P&family=Quicksand&display=swap');
 
 div{
   flex: auto;
   h3{
     color: rgb(245, 245, 245);
-    margin: 25px;
+       font-family: 'Quicksand', sans-serif;
+    margin-left: 25px;
+    font-size: 3vw;
   }
   section{
     background-color: rgba(245, 245, 245,.9);
-    width: 60vw;
+    font-family: 'Quicksand', sans-serif;
+    width: 70vw;
     height: 40vh;
     margin: 25px;
   }
