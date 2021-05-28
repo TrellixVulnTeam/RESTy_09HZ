@@ -26,17 +26,19 @@ body{
   .select-header{
     color: $primary-color;
     font-family: 'Quicksand', sans-serif;
+    font-size: 3vw;
   }
 
 
   h4{
     color: rgb(181, 181, 181);
-    font-size: 16px;
+    font-size: 2vw;
+    margin-left: 20px;
     font-family: 'Quicksand', sans-serif;
   }
   .input-field {
-    // margin: 10px;
-    width: 300px;
+    margin-top: 15px;
+    width: 40vw;
   }
 
   .submit-btn {

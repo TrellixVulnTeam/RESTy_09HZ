@@ -10,6 +10,8 @@
 
 In this first phase, our goal is to setup the basic scaffolding of the application, with intent being to add more functionality to the system as we go. This initial build sets up the file structure so that we can progressively build this application in a scalable manner.
 
+In this final phase of the RESTy build, we will be adding some more fidelity to the application, including a menu with a more detailed view of our history, as well as an about us page.
+
 ## User Stories
 
 > Users
@@ -21,6 +23,8 @@ In this first phase, our goal is to setup the basic scaffolding of the applicati
 - As a user, I want a simple list of all previous queries I’ve run so that I can easily see which queries I’ve run before
 - As a user, I want to click on an old query and have my selections appear in the form for me, so I don’t have to re-type them
 - As a user, I want to see a “loading” indicator while RESTy is fetching data so that I know it’s working on my request
+- As a user, I want to see all of my previous queries as a separate page so that I can browse them in greater detail
+- As a user, I would like to view a separate “Help” page so I can learn how the application works
 
 > Developers
 
@@ -61,6 +65,14 @@ In this first phase, our goal is to setup the basic scaffolding of the applicati
   - Add a “Loading” indicator while fetching
     - When the user clicks the “Go!” button, show a loading icon on the page
     - When the fetching of results is complete, remove the loading icon and show the results
+    Add a menu bar to the header
+  - Link labeled “Home” that links to ‘/’ and shows the search form/results page
+  - Link labeled “History” that links to ‘/history’ and loads the history page
+  - Link labeled “Help” that links to ‘/help’ and loads the about us page
+  - Add a simple history list to the left side of the application
+    - List all previous queries, showing the method and the URL
+    - When a user clicks a previous query, populate the RESTy forms with the query information
+
 
 ### UML
 
