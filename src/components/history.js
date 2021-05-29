@@ -1,31 +1,46 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import { Switch, Case, Default } from 'react-if';
 import './history.scss';
 
 
-const History = (props) => {
-  const getValues = (e) => {
-    let request = e.target.innerHTML;
-    console.log(request);
-    request = request.split(' ');
-    let url = request[1];
-    let route = request[0];
-    this.props.handleHistory(route, url)
+class History extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      location: window.location.pathname
+    }
+
   }
-  return (
-    <div>
-      <h3>History</h3>
-      <section className="history">
-        <ul>
-        {Object.keys(sessionStorage).map((i, val) => {
-          return (
-            <li key={i} onClick={getValues}>{sessionStorage.getItem(i, val)} 
-            </li>
-          );
-        })}
-        </ul>
-      </section>
-    </div>
-  )
+
+  getValues = (e) => {
+    let request = e.target.innerHTML;
+    request = request.split(', ');
+    console.log(request);
+    this.props.handleUrl(request[1]);
+    this.props.handleRoute(request[0]);
+    this.props.handleBody(request[2]);
+    // this.props.handleHistory(request);
+    this.props.handleClick(e);
+  }
+  render() {
+
+    return (
+      <div>
+        <section className="history-list">
+          {Object.keys(sessionStorage).map((i, val) => {
+            return (
+              <ol>
+                <li key={i} onClick={this.getValues} value={sessionStorage.getItem(i, val)}>{sessionStorage.getItem(i, val)}
+                </li>
+              </ol>
+            );
+          })}
+
+        </section>
+      </div>
+    )
+  }
 }
 
 export default History;

@@ -3,6 +3,7 @@ import Form from './form.js';
 import Result from './results.js';
 import Loader from './loader.js';
 import History from './history.js';
+import HistoryPage from './historyPage.js';
 import Help from './help.js';
 import superagent from 'superagent';
 import { Switch, Route } from 'react-router-dom';
@@ -28,9 +29,11 @@ class Main extends React.Component {
   handleForm = (count, results, url, route) => {
     this.setState({ count, results, url, route });
   }
-  handleHistory = (url, route) => {
-    this.setState({ url, route });
-  }
+  // handleHistory = (history) => {
+  //   this.setState({ history:[] });
+  //   this.setState({ history });
+  //   console.log(history);
+  // }
   handleUrl = (url) => {
     this.setState({ url });
   }
@@ -43,14 +46,18 @@ class Main extends React.Component {
   }
   handleBody = (body) => {
     this.setState({ body });
-    console.log(`inside handleForm ${this.state.body}`);
+    // console.log(`inside handleForm ${this.state.body}`);
   }
 
   handleClick = async (e) => {
     e.preventDefault();
-    console.log('here');
+    // console.log('here');
     this.toggleLoading();
-    sessionStorage.setItem(this.state.sessionCounter, (`${this.state.route}, ${this.state.url}`));
+    if(this.state.body) {
+      sessionStorage.setItem(this.state.sessionCounter, (`${this.state.route}, ${this.state.url}, ${this.state.body}`));
+    } else {
+      sessionStorage.setItem(this.state.sessionCounter, (`${this.state.route}, ${this.state.url}`));
+    }
     let storageCount = this.state.sessionCounter + 1;
     this.setState({ sessionCounter: storageCount });
     try {
@@ -93,18 +100,42 @@ class Main extends React.Component {
             handleRoute={this.handleRoute}
             handleUrl={this.handleUrl}
             route={this.state.route}
-            handleBody={this.handleBody} />
+            handleBody={this.handleBody} 
+            />
           {this.state.count !== 0 ?
             <>
+              <h3>Response Data</h3>
               <Result results={this.state.results} />
-              <History history={this.state.history}
-                handleHistory={this.handleHistory}></History>
+              <h3>History</h3>
+              <History 
+                handleRoute={this.handleRoute}
+                handleUrl={this.handleUrl}
+                handleBody={this.handleBody}
+                handleHistory={this.handleHistory}
+                handleClick={this.handleClick}
+                ></History>
             </>
             : ''}
         </Route>
-        <Route exact path="/history">
-          <History/>
+        <Route exact path="/history">        
+        <>
+          <If condition={this.state.loading}>
+            <Then>
+              <Loader />
+            </Then>
+          </If>
+          <h3>History</h3>
+          <h4>Click on previous request to resend request</h4>
+          <HistoryPage
+            handleRoute={this.handleRoute}
+            handleUrl={this.handleUrl}
+            handleBody={this.handleBody}
+            handleClick={this.handleClick}
+            handleHistory={this.handleHistory}
+            results={this.state.results}>
+          </HistoryPage>
 
+        </>
         </Route>
         <Route exact path="/help">
           <Help/>

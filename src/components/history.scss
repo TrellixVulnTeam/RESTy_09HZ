@@ -15,4 +15,14 @@ div{
     height: 40vh;
     margin: 25px;
   }
+
+  .history-list{
+    counter-reset: section;
+  }
+
+  .history-list li::before {
+    counter-increment: step-counter;
+    content: "•  ";
+    color: black;
+  }
 }
