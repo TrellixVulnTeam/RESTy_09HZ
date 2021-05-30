@@ -20,7 +20,6 @@ class History extends React.Component {
     this.props.handleUrl(request[1]);
     this.props.handleRoute(request[0]);
     this.props.handleBody(request[2]);
-    // this.props.handleHistory(request);
     this.props.handleClick(e);
   }
   render() {
@@ -28,14 +27,14 @@ class History extends React.Component {
     return (
       <div>
         <section className="history-list">
+          <ol>
           {Object.keys(sessionStorage).map((i, val) => {
             return (
-              <ol>
                 <li key={i} onClick={this.getValues} value={sessionStorage.getItem(i, val)}>{sessionStorage.getItem(i, val)}
                 </li>
-              </ol>
             );
           })}
+          </ol>
 
         </section>
       </div>
